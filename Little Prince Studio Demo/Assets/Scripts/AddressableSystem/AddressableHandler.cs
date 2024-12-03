@@ -26,8 +26,6 @@ namespace AddressableSystem
         private bool _isUpdateInProgress;
         private List<IResourceLocation> _loadingReferenceList;
 
-        public AddressableAssetTracker addressableAssetTracker;
-
         public void SetAddressableLoadedCallback(Action onAddressableLoaded)
         {
             _onAddressableLoaded = null;
