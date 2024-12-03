@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: PostTutorial
+  m_EditorClassIdentifier: 
+  m_GroupName: PostTutorial
+  m_Data:
+    m_SerializedData: []
+  m_GUID: f9eed5dbf0cb0c0458f06ae40e7b93c0
+  m_SerializeEntries:
+  - m_GUID: 42f7f18fdd6fc344ca8fab0c8fa70097
+    m_Address: Assets/Prefabs/Elementalist.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d773f356e255854a8bdf09043d6d68d
+    m_Address: Assets/Prefabs/Archer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7980f00969b9634b8b74319eea07497
+    m_Address: Assets/Models/SK_Archer.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 32f46eb51d9749546aacfe8dead61115
+    m_Address: Assets/Models/SK_Elementalist.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 161d4e503cb3f86478538cbd87bbbea2
+    m_Address: Assets/Materials/M_Elementalist_V2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8405311810c98a449a00a3dd50326ac
+    m_Address: Assets/Materials/M_Archer_V2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2a4a5170e58119c46be8c08603200d37
+    m_Address: Assets/Models/SK_Paladin.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e862cb81fde83da49aeb401ad718c406
+    m_Address: Assets/Materials/M_Paladin_V2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 125f17d3d485b6443a5dab5575fa0b0e
+    m_Address: Assets/Textures/Unit Models/T_Paladin_Default_D.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8074f1742aa8e94ca3e830ceb5d7b8e
+    m_Address: Assets/Textures/Unit Models/T_Samurai_Default_D.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b21ee1166b42a5b4aad93770f86d1c3b
+    m_Address: Assets/Materials/M_Samurai_V2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b0586a7dc8e181a4e90708a9c6b0766a
+    m_Address: Assets/Models/SK_Samurai.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c973db6126e75949949992bdeef8351
+    m_Address: Assets/Prefabs/Units/Samurai.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 73449b0f9f648ea4cb012de90a0946de
+    m_Address: Assets/Prefabs/Units/Paladin.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 3e5d6e0bc0568ea4aab636712b5c07bf, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 012ef9cde2c82964fbd47d9861534eb2, type: 2}
+    - {fileID: 11400000, guid: e82f7e3a2a3d0834081248aa80de1903, type: 2}

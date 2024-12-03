@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: OnBuild
+  m_EditorClassIdentifier: 
+  m_GroupName: OnBuild
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a8837c08ddee7154298a58dd10ac4817
+  m_SerializeEntries:
+  - m_GUID: 424fc31deeb2ed648bf1074488eef64c
+    m_Address: Assets/Prefabs/Druid.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d54500cf668baf7438f90eed1e6afa80
+    m_Address: Assets/Models/SK_Druid.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66604ba88ed2f5f41879534b2412f95e
+    m_Address: Assets/Materials/M_Druid_V2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 3e5d6e0bc0568ea4aab636712b5c07bf, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 6e7af51607672d542a6548b619b0e984, type: 2}
+    - {fileID: 11400000, guid: 04f0cb6f1cd1aa647ab4a049dce9bbda, type: 2}

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PaladinOverride
+  m_Controller: {fileID: 9100000, guid: a8b07d31dd0602445a7706b08c2fee61, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 15919276b2f46d74db9b0f7fafdd3784, type: 2}
+    m_OverrideClip: {fileID: -9090311485225599251, guid: 2a4a5170e58119c46be8c08603200d37,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: f9ded01ed8079b749b9000ed01e86525, type: 2}
+    m_OverrideClip: {fileID: -246524458798183891, guid: 2a4a5170e58119c46be8c08603200d37,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 1802c35c32511544090971ae421b972b, type: 2}
+    m_OverrideClip: {fileID: 6764341728044465168, guid: 2a4a5170e58119c46be8c08603200d37,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 93da60a6e56b19d4ebc3380a117bb36c, type: 2}
+    m_OverrideClip: {fileID: 6509726596115722979, guid: 2a4a5170e58119c46be8c08603200d37,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 6157352c7b56f9c449886922e25a1b9a, type: 2}
+    m_OverrideClip: {fileID: -246524458798183891, guid: 2a4a5170e58119c46be8c08603200d37,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 45c2f62f38685e342a6e6b3e4440e0ba, type: 2}
+    m_OverrideClip: {fileID: -246524458798183891, guid: 2a4a5170e58119c46be8c08603200d37,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 4359a7e3395b99347a0342b7888ce352, type: 2}
+    m_OverrideClip: {fileID: -246524458798183891, guid: 2a4a5170e58119c46be8c08603200d37,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: fffb0c45f231ce549ae9aa64fc08515b, type: 2}
+    m_OverrideClip: {fileID: -246524458798183891, guid: 2a4a5170e58119c46be8c08603200d37,
+      type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 3dfec6471f6e46646aa332db02c27b91, type: 2}
+    m_OverrideClip: {fileID: -246524458798183891, guid: 2a4a5170e58119c46be8c08603200d37,
+      type: 3}
