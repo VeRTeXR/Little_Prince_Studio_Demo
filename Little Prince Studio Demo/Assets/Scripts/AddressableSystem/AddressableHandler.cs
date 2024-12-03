@@ -51,81 +51,96 @@ namespace AddressableSystem
 
         private async void StartLoadingAddressableAssets(List<IResourceLocation> resourceLocations)
         {
-            if (resourceLocations == null)
+            try
             {
-                Debug.LogError("Failed to load addressable resource locations.");
-                return;
+                if (resourceLocations == null)
+                {
+                    Debug.LogError("Failed to load addressable resource locations.");
+                    return;
+                }
+
+                var uniqueResourceList = resourceLocations.Distinct().ToList();
+
+                var hasAddressableToDownload = await HasAddressableToDownload(uniqueResourceList);
+                if (!hasAddressableToDownload) return;
+
+                _isUpdateInProgress = true;
+                _totalBytesToDownload = 0;
+                _totalBytesDownloaded = 0;
+
+                ProcessDownload(uniqueResourceList);
             }
-
-            var uniqueResourceList = resourceLocations.Distinct().ToList();
-
-            var hasAddressableToDownload = await HasAddressableToDownload(uniqueResourceList);
-            if (!hasAddressableToDownload) return;
-
-            _isUpdateInProgress = true;
-            _totalBytesToDownload = 0;
-            _totalBytesDownloaded = 0;
-
-            ProcessDownload(uniqueResourceList);
+            catch (Exception exception)
+            {
+                Debug.LogError(exception.Message);
+            }
         }
 
         private async void ProcessDownload(List<IResourceLocation> resourceLocations)
         {
-            var downloadFailedList = new List<IResourceLocation>();
-            var downloadTasks = new List<Task>();
-            foreach (var irl in resourceLocations)
+            try
             {
-                var loadHandle = Addressables.DownloadDependenciesAsync(irl.PrimaryKey, true);
-                TrackDownloadSize(loadHandle).Forget();
-
-                var taskCompletionSource = new TaskCompletionSource<bool>();
-                loadHandle.Completed += loadingOperationHandle =>
+                var downloadFailedList = new List<IResourceLocation>();
+                var downloadTasks = new List<Task>();
+                foreach (var irl in resourceLocations)
                 {
-                    var downloadError = GetDownloadError(loadHandle);
-                    if (!string.IsNullOrEmpty(downloadError))
-                        Debug.LogError($"Load Handle Error: {downloadError}");
+                    var loadHandle = Addressables.DownloadDependenciesAsync(irl.PrimaryKey, true);
+                    TrackDownloadSize(loadHandle).Forget();
 
-                    if (loadingOperationHandle.Status == AsyncOperationStatus.Succeeded)
+                    var taskCompletionSource = new TaskCompletionSource<bool>();
+                    loadHandle.Completed += loadingOperationHandle =>
                     {
-                        if (loadingOperationHandle.Result == null) return;
-                        _assetsLoadedCount++;
-                        Debug.Log($"({_assetsLoadedCount}/{_assetToLoadCount}) Asset Loaded : " + irl.PrimaryKey);
-                        taskCompletionSource.SetResult(true);
-                    }
-                    else if (loadingOperationHandle.Status == AsyncOperationStatus.Failed)
-                    {
-                        downloadFailedList.Add(irl);
-                        taskCompletionSource.SetResult(false);
-                    }
-                };
+                        var downloadError = GetDownloadError(loadHandle);
+                        if (!string.IsNullOrEmpty(downloadError))
+                            Debug.LogError($"Load Handle Error: {downloadError}");
 
-                downloadTasks.Add(taskCompletionSource.Task);
-            }
+                        if (loadingOperationHandle.Status == AsyncOperationStatus.Succeeded)
+                        {
+                            if (loadingOperationHandle.Result == null) return;
+                            _assetsLoadedCount++;
+                            Debug.Log($"({_assetsLoadedCount}/{_assetToLoadCount}) Asset Loaded : " + irl.PrimaryKey);
+                            taskCompletionSource.SetResult(true);
+                        }
+                        else if (loadingOperationHandle.Status == AsyncOperationStatus.Failed)
+                        {
+                            downloadFailedList.Add(irl);
+                            taskCompletionSource.SetResult(false);
+                        }
+                    };
 
-            await Task.WhenAll(downloadTasks);
+                    downloadTasks.Add(taskCompletionSource.Task);
+                }
 
-            if (downloadFailedList.Any())
-            {
-                //TODO:: Trigger Popup on Download failed to allow player retry
-                // PopupHelper.TriggerDisconnectionPopup(this, () => { ProcessDownload(downloadFailedList); });
-            }
-            else
-            {
-                _isUpdateInProgress = false;
-                if (_assetsLoadedCount >= _assetToLoadCount)
+                await Task.WhenAll(downloadTasks);
+
+                if (downloadFailedList.Any())
                 {
-                    OnLoadingProgressUpdated?.Invoke(1);
-
-                    Debug.Log($"Asset Download completed: {_totalBytesDownloaded}/{_totalBytesToDownload}");
-                    Debug.Log($"Asset Loading completed: {_assetsLoadedCount}, Total Asset: {_assetToLoadCount}");
-                    Debug.Log("Download and asset loading completed.");
-                    _onAddressableLoaded?.Invoke();
-                    _isUpdateInProgress = false;
+                    //TODO:: Trigger Popup on Download failed to allow player retry
+                    // PopupHelper.TriggerDisconnectionPopup(this, () => { ProcessDownload(downloadFailedList); });
                 }
                 else
                 {
-                    Debug.LogError($"Asset Loaded Count is less than the Total Asset Needed");
+                    _isUpdateInProgress = false;
+                    if (_assetsLoadedCount >= _assetToLoadCount)
+                    {
+                        OnLoadingProgressUpdated?.Invoke(1);
+
+                        Debug.Log($"Asset Download completed: {_totalBytesDownloaded}/{_totalBytesToDownload}");
+                        Debug.Log($"Asset Loading completed: {_assetsLoadedCount}, Total Asset: {_assetToLoadCount}");
+                        Debug.Log("Download and asset loading completed.");
+                        await UniTask.WaitForEndOfFrame();
+                        _onAddressableLoaded?.Invoke();
+                        _isUpdateInProgress = false;
+                    }
+                    else
+                    {
+                        Debug.LogError($"Asset Loaded Count is less than the Total Asset Needed");
+                    }
                 }
+            }
+            catch (Exception exception)
+            {
+                Debug.LogError(exception.Message);
             }
         }
 
