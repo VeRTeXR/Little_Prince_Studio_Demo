@@ -1,55 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AddressableSystem;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.Serialization;
 
-public class UnitSpawner:MonoBehaviour
+namespace DemoSystem
 {
-    [Header("Dependencies")]   
-    [SerializeField] private AddressableAssetTracker addressableAssetTracker;
+    public class UnitSpawner:MonoBehaviour
+    {
+        [Header("Dependencies")]   
+        [SerializeField] private AddressableAssetTracker addressableAssetTracker;
     
-    [Header("Addressable References ")]
-    [SerializeField] private List<AssetReference> preTutorialReferenceList;
-    [SerializeField] private List<AssetReference> postTutorialReferenceList;
+        [Header("Addressable References ")]
+        [SerializeField] private List<AssetReference> preTutorialReferenceList;
+        [SerializeField] private List<AssetReference> postTutorialReferenceList;
    
-    [Header("World Space Anchor")]
-    [SerializeField] private Transform preTutorialUnitAnchor;
-    [SerializeField] private Transform postTutorialUnitAnchor;
-    
-    public async void SpawnPreTutorialUnits()
-    {
-        try
-        {
-            await SpawnUnitToAnchor(preTutorialReferenceList, preTutorialUnitAnchor);
-        }
-        catch (Exception exception)
-        {
-            Debug.LogError(exception.Message);
-        }
-    }
-    
-    public async void SpawnPostTutorialUnits()
-    {
-        try
-        {
-            await SpawnUnitToAnchor(postTutorialReferenceList, postTutorialUnitAnchor);
-        }
-        catch (Exception exception)
-        {
-            Debug.LogError(exception.Message);
-        }
-    }
+        [Header("World Space Anchor")]
+        [SerializeField] private Transform preTutorialUnitAnchor;
+        [SerializeField] private Transform postTutorialUnitAnchor;
 
-    private async Task SpawnUnitToAnchor(List<AssetReference> assetReferences, Transform anchorTransform)
-    {
-        for (var index = 0; index < assetReferences.Count; index++)
+        public void SpawnPreTutorialUnits()
         {
-            var assetReference = assetReferences[index];
-            var unitPrefab = await addressableAssetTracker.LoadUnitPrefab(assetReference);
-            var unitInstance = Instantiate(unitPrefab, anchorTransform);
-            unitInstance.transform.position = new Vector3(anchorTransform.position.x+index, anchorTransform.position.y, anchorTransform.position.z);
+            SpawnUnitToAnchor(preTutorialReferenceList, preTutorialUnitAnchor);
+        }
+
+        public void SpawnPostTutorialUnits()
+        {
+            SpawnUnitToAnchor(postTutorialReferenceList, postTutorialUnitAnchor);
+        }
+
+        private void SpawnUnitToAnchor(List<AssetReference> assetReferences, Transform anchorTransform)
+        {
+            for (var index = 0; index < assetReferences.Count; index++)
+            {
+                var assetReference = assetReferences[index];
+                var targetSpawnPosition = new Vector3(anchorTransform.position.x + index, anchorTransform.position.y,
+                    anchorTransform.position.z);
+                addressableAssetTracker.LoadUnitPrefab(assetReference, (prefab) =>
+                {
+                    OnUnitLoaded(targetSpawnPosition,prefab,anchorTransform);
+                });
+            }
+        }
+
+        private void OnUnitLoaded(Vector3 targetSpawnPosition, GameObject prefab, Transform anchorTransform)
+        {
+            var unitInstance = Instantiate(prefab, anchorTransform);
+            unitInstance.transform.position = targetSpawnPosition;
             unitInstance.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
     }

@@ -1,17 +1,21 @@
+using UI.SplashScreen;
 using UnityEngine;
 
-public class DemoSequencer : MonoBehaviour
+namespace DemoSystem
 {
-    [SerializeField] private SplashScreenPage splashScreenPage;
-    [SerializeField] private UnitSpawner unitSpawner;
-    private void Awake()
+    public class DemoSequencer : MonoBehaviour
     {
-        unitSpawner.SpawnPreTutorialUnits();        
-
-        splashScreenPage.SetOnCloseEvent(() =>
+        [SerializeField] private SplashScreenPage splashScreenPage;
+        [SerializeField] private UnitSpawner unitSpawner;
+        private void Awake()
         {
-            splashScreenPage.gameObject.SetActive(false);
-            unitSpawner.SpawnPostTutorialUnits();        
-        });
+            unitSpawner.SpawnPreTutorialUnits();        
+
+            splashScreenPage.SetOnCloseEvent(() =>
+            {
+                splashScreenPage.gameObject.SetActive(false);
+                unitSpawner.SpawnPostTutorialUnits();        
+            });
+        }
     }
 }
