@@ -81,7 +81,6 @@ public class SplashScreenPage : MonoBehaviour
         loadingOverlay.SetActive(true);
         Resources.UnloadUnusedAssets();
         
-        
         var addressableUpdateCheckTask = addressableHandler.HasExternalAddressableToDownload();
         Debug.Log( "[AddressableDownload] Checking Addressable Update....");
         var isAddressableHasUpdate = await addressableUpdateCheckTask;

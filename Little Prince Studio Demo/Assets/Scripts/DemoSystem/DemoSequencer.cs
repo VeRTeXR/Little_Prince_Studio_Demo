@@ -6,9 +6,12 @@ public class DemoSequencer : MonoBehaviour
     [SerializeField] private UnitSpawner unitSpawner;
     private void Awake()
     {
+        unitSpawner.SpawnPreTutorialUnits();        
+
         splashScreenPage.SetOnCloseEvent(() =>
         {
-            unitSpawner.SpawnAllAvailableUnits();        
+            splashScreenPage.gameObject.SetActive(false);
+            unitSpawner.SpawnPostTutorialUnits();        
         });
     }
 }
