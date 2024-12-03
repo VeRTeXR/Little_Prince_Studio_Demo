@@ -16,7 +16,37 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: f9eed5dbf0cb0c0458f06ae40e7b93c0
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 42f7f18fdd6fc344ca8fab0c8fa70097
+    m_Address: Assets/Prefabs/Elementalist.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d773f356e255854a8bdf09043d6d68d
+    m_Address: Assets/Prefabs/Archer.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7980f00969b9634b8b74319eea07497
+    m_Address: Assets/Models/SK_Archer.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 32f46eb51d9749546aacfe8dead61115
+    m_Address: Assets/Models/SK_Elementalist.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 161d4e503cb3f86478538cbd87bbbea2
+    m_Address: Assets/Materials/M_Elementalist_V2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8405311810c98a449a00a3dd50326ac
+    m_Address: Assets/Materials/M_Archer_V2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3e5d6e0bc0568ea4aab636712b5c07bf, type: 2}
   m_SchemaSet:

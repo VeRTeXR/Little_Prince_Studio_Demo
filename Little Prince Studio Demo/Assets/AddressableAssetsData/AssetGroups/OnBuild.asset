@@ -16,7 +16,22 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: a8837c08ddee7154298a58dd10ac4817
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 424fc31deeb2ed648bf1074488eef64c
+    m_Address: Assets/Prefabs/Druid.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d54500cf668baf7438f90eed1e6afa80
+    m_Address: Assets/Models/SK_Druid.fbx
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 66604ba88ed2f5f41879534b2412f95e
+    m_Address: Assets/Materials/M_Druid_V2.mat
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3e5d6e0bc0568ea4aab636712b5c07bf, type: 2}
   m_SchemaSet:

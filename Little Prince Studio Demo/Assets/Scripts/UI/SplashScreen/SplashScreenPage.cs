@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class SplashScreenPage : MonoBehaviour
@@ -24,9 +21,8 @@ public class SplashScreenPage : MonoBehaviour
     private RectTransform _loadingBarTransform;
     private float _loadingFillValue;
     private bool _isClosing;
-    private UnityEvent _onCloseEvent = new();
+    private Action _onCloseEvent;
     private Action _onLoadingFillComplete;
-    
     private Tweener _loadingFillTween;
 
     private void Awake()
@@ -36,6 +32,8 @@ public class SplashScreenPage : MonoBehaviour
     }
 
     
+    
+    
     private void SetupButtonCallback()
     {   
         tapToStartOverlayButton.onClick.RemoveAllListeners();
@@ -44,6 +42,8 @@ public class SplashScreenPage : MonoBehaviour
     
     private void OnTapToStartClicked()
     {
+        StartWaitAddressableDownloadAndCloseSequence();
+        // gameObject.SetActive(false);
         //TODO:: Hide and show loaded addressable for this demo purpose, Code below are previous project authentication flow
         // Global.UserDataHandler.GetActiveSession((deviceId) =>
         // {
@@ -174,4 +174,10 @@ public class SplashScreenPage : MonoBehaviour
     }
 
 
+
+    public void SetOnCloseEvent(Action onClosed)
+    {
+        _onCloseEvent = onClosed;
+    }
+    
 }
